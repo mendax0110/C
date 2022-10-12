@@ -1,26 +1,33 @@
-/*include the librarys*/
+/*include the header files*/
 #include <stdio.h>
 
-/*main part of the program*/
+/*main function*/
 int main()
 {
-    int num[] = {10,2,15,20,34,56,86};
-    int value,pos = -1,i;
+    int num[] = {10, 2, 15, 20, 34, 56, 86};
+    int value, pos = -1, i;
 
-    printf("Enter The value You can search: ");
+    /*get the input from the user*/
+    printf("Enter the value to search: ");
     scanf("%d", &value);
 
+    /*search the value in the array*/
     for(i = 0; i < 7; i++)
     {
-        if(value==num[i])
+        if(num[i] == value)
         {
-            pos = i+1;
+            pos = i + 1;
             break;
         }
     }
 
+    /*print the result*/
     if(pos == -1)
-        printf("Item is not found ");
+    {
+        printf("Value not found in the array");
+    }
     else
-        printf("The Value is found at %d position. ",pos);
+    {
+        printf("Value found at position %d", pos);
+    }
 }
