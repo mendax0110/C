@@ -1,5 +1,7 @@
+/*include the header file*/
 #include <stdio.h>
 
+/*main function*/
 int main()
 {
     int var;

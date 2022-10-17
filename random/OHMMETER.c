@@ -1,5 +1,6 @@
-/*This is a simple Ohmmeter*/
-/*define the pins and the values*/
+/*This is a simple Ohmmeter
+ *define the pins and the values
+ */
 int analogPin       = 0;
 int raw             = 0;
 int Vin             = 5;
