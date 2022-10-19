@@ -22,6 +22,7 @@ constexpr uint16_t loopPreiodMsec = 500;
 constexpr uint16_t fooPeriodMsec  = 1000;
 constexpr uint16_t barPeriodMsec  = 2000;
 
+/*define the task scheduler*/
 void setup()
 {
     Serial.begin(9600);
@@ -29,6 +30,7 @@ void setup()
     Serial.println("\nStarting TaskScheduler demo!");
 }
 
+/*create a task scheduler object*/
 void loop()
 {
     /*use the task scheduler*/
@@ -38,6 +40,7 @@ void loop()
      */
 }
 
+/*instantiate the task scheduler*/
 void taskloop()
 {
     /*notice the "static" keyword is needed in the declaration
@@ -58,6 +61,7 @@ void taskloop()
 constexpr uint16_t fooIter = fooPeriodMsec/loopPeriodMsec;
 constexpr uint16_t barIter = barPeriodMsec/loopPeriodMsec;
 
+/*use a simple counter to run the callbacks at the specified period*/
 void manualLoop()
 {
     static uint32_t i = 0;
