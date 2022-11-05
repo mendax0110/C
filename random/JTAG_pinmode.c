@@ -1,3 +1,4 @@
+/*include the libraries*/
 #include <stdio.h>
 #include <makestuff.h>
 #include <libgpiojtag.h>
