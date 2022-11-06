@@ -31,6 +31,7 @@ int setBit(result, i, s)
     return result & ~(1 << i);
 }
 
+/*main function*/
 int main()
 {
     unsigned int x, y;

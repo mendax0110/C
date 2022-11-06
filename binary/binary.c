@@ -1,36 +1,40 @@
+/*include the libraries*/
 #include <stdio.h>
 #include <math.h>
 
-int binaryTooctal(long binarynum)
+/*function to binary to octal*/
+int binaryTooctal(int binaryNumber);
 {
-    int octalnum = 0, decimalnum = 0, i = 0;
+    int octalNumber = 0, decimalNumber = 0, i = 0;
 
-    while(binarynum != 0)
+    while(binaryNumber != 0)
     {
-        decimalnum = decimalnum + (binarynum%10) * pow(2,i);
-        i++;
-        binarynum = binarynum / 10;
+        decimalNumber += (binaryNumber%10) * pow(2,i);
+        ++i;
+        binaryNumber/=10;
     }
 
     i = 1;
 
-    while(decimalnum != 0)
+    while (decimalNumber != 0)
     {
-        octalnum = octalnum + (decimalnum%8) * i;
-        decimalnum = decimalnum / 8;
-        i = i * 10;
+        octalNumber += (decimalNumber % 8) * i;
+        decimalNumber /= 8;
+        i *= 10;
     }
 
-    return octalnum;
+    return octalNumber;
 }
+
+/*get user input, call the function and print the result*/	
 int main()
 {
-    long binarynum;
+    int binaryNumber;
 
     printf("Enter a binary number: ");
-    scanf("%ld", &binarynum);
+    scanf("%d", &binaryNumber);
 
-    printf("Equivalent octal value: %d", binaryTooctal(binarynum));
+    printf("%d in binary = %d in octal", binaryNumber, binaryTooctal(binaryNumber));
 
     return 0;
 }
