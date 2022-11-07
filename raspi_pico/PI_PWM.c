@@ -1,29 +1,36 @@
-/*include the librarys*/
-#include "wiringPi.h"
+/*include the libraries*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include "wiringPi.h"
 
-/*main part of the program*/
+/*main of the program*/
 int main(void)
 {
     int bright;
 
-    printf("Rasperry Pi wiringPi PWM test program\n");
+    /*print the message*/
+    printf("Raspberry Pi Pico wiringPi PWM test program\n");
 
     if(wiringPiSetup() == -1)
-        exit(1);
+    {
+        printf("setup wiringPi failed!");
+        return 1;
+    }
 
+    /*set the pin mode*/
     pinMode(1, PWM_OUTPUT);
 
+    /*set the PWM range*/
     for(;;)
     {
-        for(bright = 0; bright < 1024; ++bright)
+        for(bright = 0; bright < 1024; bright++)
         {
             pwmWrite(1, bright);
             delay(1);
         }
-        for(bright = 1023; bright >= 0; --bright)
+
+        for(bright = 1023; bright >= 0; bright--)
         {
             pwmWrite(1, bright);
             delay(1);
