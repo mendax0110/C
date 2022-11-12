@@ -1,3 +1,4 @@
+/*include the header file*/
 #include <stdio.h>
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
@@ -9,6 +10,7 @@
 const uint pin_tx = 2;
 const uint pin_rx = 3;
 
+/*main*/
 int main()
 {
     stdio_init_all();
@@ -19,6 +21,7 @@ int main()
 
     uint offset_tx = pio_add_program(pio, &manchester_tx_program);
     uint offset_rx = pio_add_program(pio, &manchester_rx_program);
+
     printf("Transmit program loaded at %d\n", offset_tx);
     printf("Receive program loaded at %d\n", offset_rx);
 
@@ -31,6 +34,10 @@ int main()
     pio_sm_put_blocking(pio, sm_tx, 0x12345678);
     pio_sm_set_enabled(pio, sm_tx, true);
 
+    /*wait for the transmit to finish*/
     for(int i = 0; i < 3; ++i)
-        printf("%08x\n", pio_sm_get_blocking(pio, sm_rx));
+    {
+        uint32_t data = pio_sm_get_blocking(pio, sm_rx);
+        printf("Received %08x\n", data);
+    }
 }
