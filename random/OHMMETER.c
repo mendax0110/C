@@ -18,6 +18,7 @@ void setup()
 /*now do the math and print the serial output*/
 void loop()
 {
+    /*read the analog value*/	
     raw = analogRead(analogPin);
 
     if(raw)
@@ -27,6 +28,7 @@ void loop()
         buffer  = (Vin/Vout) - 1;
         R2      = R1 * buffer;
 
+        /*print the output*/
         Serial.print("Vout: ");
         Serial.println(Vout);
         Serial.print("R2: ");
