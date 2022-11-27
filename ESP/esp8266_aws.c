@@ -1,6 +1,8 @@
+/*include the libraries*/
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 
+/*credentials and SSID*/
 const char* ssid = "yourSSID";
 const char* password = "yourPSWD";
 
@@ -122,6 +124,7 @@ void setup()
 unsigned long lastPublish;
 int msgCount;
 
+/*check for messages and publish*/
 void loop()
 {
     pubSubCheckConnect();
@@ -135,6 +138,7 @@ void loop()
     }
 }
 
+/*check if message is received*/
 void msgReceived(char* topic, byte* payload, unsigned int length)
 {
     Serial.print("Message received on "); Serial.print(topic); Serial.print(": ");
@@ -145,6 +149,7 @@ void msgReceived(char* topic, byte* payload, unsigned int length)
     Serial.println();
 }
 
+/*check if connected to wifi and pubsub*/
 void pubSubCheckConnect()
 {
     if(!pubSubClient.connected())
@@ -161,6 +166,7 @@ void pubSubCheckConnect()
     pubSubClient.loop();
 }
 
+/*set the current time*/
 void setCurrentTime()
 {
     configTime(3 * 2600, 0, "pool.ntp.org", "time.nist.gov");

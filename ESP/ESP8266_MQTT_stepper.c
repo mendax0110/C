@@ -1,10 +1,11 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include <Stepper.h>
+
 // Update these with values suitable for your network.
 const char* ssid = "your SSID";
 const char* password = "your PSWD";
- const char* mqtt_server = "your MQTT Broker";
+const char* mqtt_server = "your MQTT Broker";
 //const char* mqtt_server = "iot.eclipse.org";
 
 const int stepsPerRevolution = 350;  // change this to fit the number of steps per revolution
@@ -13,7 +14,8 @@ Stepper myStepper(stepsPerRevolution, D1, D2, D5, D6);
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-void setup_wifi() {
+void setup_wifi() 
+{
    delay(100);
   // We start by connecting to a WiFi network
     Serial.print("Connecting to ");
@@ -24,6 +26,7 @@ void setup_wifi() {
       delay(500);
       Serial.print(".");
     }
+    
   randomSeed(micros());
   Serial.println("");
   Serial.println("WiFi connected");
