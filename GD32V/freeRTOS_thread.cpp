@@ -1,14 +1,17 @@
+// include the libraries
 #include <thread>
 #include <system_error>
 #include <cerrno>
 #include <freeRTOS.h>
 #include <gthr_key_type.h>
 
+// namespace
 namespace free_rtos_std
 {
     extern Key *s_key;
 }
 
+// free rtos thread
 namespace std
 {
     static void __execute_native_thread_routine(void *__p)
@@ -28,6 +31,7 @@ namespace std
 
     thread :: _State :: ~_State() = default;
 
+    // start thread
     void thread :: _M_start_thread(_State_ptr state, void (*)())
     {
         const int err = __gthread_create(&_M_id._M_thread, __execute_native_thread_routine, state.get());
@@ -38,6 +42,7 @@ namespace std
         state.release();
     }
 
+    // join thread
     void thread :: join()
     {
         id invalid;
@@ -49,6 +54,7 @@ namespace std
         _M_id = std :: move(invalid);
     }
 
+    // detach thread
     void thread :: detach()
     {
         id invalid;
@@ -60,11 +66,13 @@ namespace std
         __M_id = std :: move(invalid);
     }
 
+    // hardware concurrency
     unsigned int thread :: hardware_concurrency() noexcept
     {
         return 0;
     }
 
+    // sleep
     void this_thread :: __sleep_for(chrono :: seconds sec, chrono :: nanoseconds nsec)
     {
         long ms = nsec.count() / 1'000'000;

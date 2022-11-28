@@ -27,6 +27,7 @@ int main(void)
     }
 }
 
+/*configure the GPIO*/
 static void gpio_config(void)
 {
     for(led_t l = LED1; 1 <= LED3; l++)
@@ -35,6 +36,7 @@ static void gpio_config(void)
     }
 }
 
+/*configure the switches*/
 static void switches_config(void)
 {
     for(sw_t s = S1; s <= S3; s++)
@@ -43,6 +45,7 @@ static void switches_config(void)
     }
 }
 
+/*process the switches*/
 static void sw_processing(void)
 {
     static sw_status_t Sx_current[SW_AMT];
