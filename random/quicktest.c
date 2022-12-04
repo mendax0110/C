@@ -1,13 +1,14 @@
-/*define cpu,baudrate, etc*/
-#define STRLEN          32
-#define F_CPU       	1843200UL
-#define USART_BAUDRATE  115200
-#define BAUD_PRESCALE   (((F_CPU / (USART_BAUDRATE * 16UL))) -1)
 /*include the librarys*/
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <string.h>
 #include <util/delay.h>
+
+/*define cpu,baudrate, etc*/
+#define STRLEN          32
+#define F_CPU       	1843200UL
+#define USART_BAUDRATE  115200
+#define BAUD_PRESCALE   (((F_CPU / (USART_BAUDRATE * 16UL))) -1)
 
 /*send the strings*/
 void sendstring(void);
@@ -40,6 +41,7 @@ int main(void)
     return 0;
 }
 
+/*send the string*/
 void sendstring()
 {
     outp = 0;
@@ -48,6 +50,7 @@ void sendstring()
     UCSRB |= (1 << UDRIE);
 }
 
+/*interrupt for sending the string*/
 ISR(USART_UDRE_vect)
 {
     UCSRB &= ~(1 << UDRIE);
