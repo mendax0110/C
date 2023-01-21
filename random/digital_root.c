@@ -13,6 +13,7 @@ int main()
     /*calculate digital root of the number*/
     temp = number;
 
+    /*loop until temp is not equal to 0*/
     while(temp != 0)
     {
         int digit = temp % 10;
