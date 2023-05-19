@@ -8,14 +8,9 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Build
       run: |
-        find . -name "*.c" -print0 | while IFS= read -r -d '' file; do
-          echo "Building $file"
-          gcc "$file" -o "${file%.c}"
-        done
+        find . -name "*.cpp" -execdir g++ -o my_program {} \;
