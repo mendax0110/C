@@ -13,4 +13,4 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build
       run: |
-        find . -name "*.cpp" -execdir g++ -o my_program {} \;
+        find . -name "*.c" -execdir gcc -o my_program {} \;
